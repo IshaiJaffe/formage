@@ -274,6 +274,12 @@ var DateField = exports.DateField = BaseField.extend({
         var schema = this._super();
         schema['type'] = Date;
         return schema;
+    },
+    clean_value: function (req, callback) {
+        if (!this.value)
+            this.value = null;
+        this._super(req, callback);
+        return this;
     }
 });
 
